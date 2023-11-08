@@ -1,0 +1,206 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:views="clr-namespace:ESSTester.UI.UI.Views">
+
+    <Style TargetType="{x:Type views:ESSRackView}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type views:ESSRackView}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <Border>
+                                <ListView ItemsSource="{Binding BmsView}"
+                                          Background="#303030"
+                                          BorderBrush="#131313"
+                                          BorderThickness="1"
+                                          ScrollViewer.CanContentScroll="True"
+                                          ScrollViewer.VerticalScrollBarVisibility="Visible"
+                                          SnapsToDevicePixels="True"
+                                          UseLayoutRounding="True">
+                                    <ListView.ItemContainerStyle>
+                                        <Style TargetType="{x:Type ListViewItem}">
+                                            <Style.Resources>
+                                                <!-- Foreground for Selected ListViewItem -->
+                                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black"/>
+                                                <!-- Background for Selected ListViewItem -->
+                                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+                                            </Style.Resources>
+                                            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                                            <Setter Property="FontSize" Value="12"/>
+                                            <Setter Property="FontWeight" Value="Bold"/>
+                                            <Setter Property="Foreground" Value="#F3F3F3"/>
+                                            <Setter Property="SnapsToDevicePixels" Value="True"/>
+                                            <Setter Property="UseLayoutRounding" Value="True"/>
+                                        </Style>
+                                    </ListView.ItemContainerStyle>
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridView.ColumnHeaderContainerStyle>
+                                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                                    <Setter Property="VerticalContentAlignment" Value="Bottom"/>
+                                                    <Setter Property="Height" Value="20"/>
+                                                    <Setter Property="Foreground" Value="#F3F3F3"/>
+                                                    <Setter Property="Background" Value="#303030"/>
+                                                    <Setter Property="BorderBrush" Value="#131313"/>
+                                                    <Setter Property="BorderThickness" Value="1"/>
+                                                    <Setter Property="SnapsToDevicePixels" Value="True"/>
+                                                    <Setter Property="UseLayoutRounding" Value="True"/>
+                                                </Style>
+                                            </GridView.ColumnHeaderContainerStyle>
+                                            <GridViewColumn Header="BMS Item" DisplayMemberBinding="{Binding ItemName}" 
+                                                            Width="220"/>
+                                            <GridViewColumn Header="Value" DisplayMemberBinding="{Binding ItemValue}" 
+                                                            Width="80"/>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </Border>
+
+                            <Border Grid.Column="1">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <ComboBox ItemsSource="{Binding RackList}"
+                                              SelectedItem="{Binding SelectedRack}"
+                                              Background="#303030"
+                                              BorderBrush="#131313"
+                                              BorderThickness="1">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal"
+                                                            HorizontalAlignment="Center">
+                                                    <TextBlock Text="{Binding Name}"
+                                                               HorizontalAlignment="Center"
+                                                               TextAlignment="Center"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>   
+                                    </ComboBox>
+
+                                    <ListView ItemsSource="{Binding RackView}"
+                                              Grid.Row="1"
+                                          Background="#303030"
+                                          BorderBrush="#131313"
+                                          BorderThickness="1"
+                                          ScrollViewer.CanContentScroll="True"
+                                          ScrollViewer.VerticalScrollBarVisibility="Visible">
+                                        <ListView.ItemContainerStyle>
+                                            <Style TargetType="{x:Type ListViewItem}">
+                                                <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                                                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                                                <Setter Property="FontSize" Value="12"/>
+                                                <Setter Property="FontWeight" Value="Bold"/>
+                                                <Setter Property="Foreground" Value="#F3F3F3"/>
+                                            </Style>
+                                        </ListView.ItemContainerStyle>
+                                        <ListView.View>
+                                            <GridView>
+                                                <GridView.ColumnHeaderContainerStyle>
+                                                    <Style TargetType="{x:Type GridViewColumnHeader}">
+                                                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                                        <Setter Property="VerticalContentAlignment" Value="Bottom"/>
+                                                        <Setter Property="Height" Value="20"/>
+                                                        <Setter Property="Foreground" Value="#F3F3F3"/>
+                                                        <Setter Property="Background" Value="#303030"/>
+                                                        <Setter Property="BorderBrush" Value="#131313"/>
+                                                        <Setter Property="BorderThickness" Value="1"/>
+                                                    </Style>
+                                                </GridView.ColumnHeaderContainerStyle>
+                                                <GridViewColumn Header="Rack Item" DisplayMemberBinding="{Binding ItemName}" 
+                                                            Width="220"/>
+                                                <GridViewColumn Header="Value" DisplayMemberBinding="{Binding ItemValue}" 
+                                                            Width="80"/>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+                                </Grid>
+                                
+                            </Border>
+
+                            <Border Grid.Column="2">
+                                <ListView ItemsSource="{Binding TrayView}"
+                                          Background="#303030"
+                                          BorderBrush="#131313"
+                                          BorderThickness="1"
+                                          ScrollViewer.CanContentScroll="False"
+                                          ScrollViewer.VerticalScrollBarVisibility="Visible"
+                                          SnapsToDevicePixels="True"
+                                          UseLayoutRounding="True">
+                                    <ListView.ItemContainerStyle>
+                                        <Style TargetType="{x:Type ListViewItem}">
+                                            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                                            <Setter Property="FontSize" Value="12"/>
+                                            <Setter Property="FontWeight" Value="Bold"/>
+                                            <Setter Property="Foreground" Value="#F3F3F3"/>
+                                            <Setter Property="SnapsToDevicePixels" Value="True"/>
+                                            <Setter Property="UseLayoutRounding" Value="True"/>
+                                        </Style>
+                                    </ListView.ItemContainerStyle>
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridView.ColumnHeaderContainerStyle>
+                                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                                    <Setter Property="VerticalContentAlignment" Value="Bottom"/>
+                                                    <Setter Property="Height" Value="20"/>
+                                                    <Setter Property="Foreground" Value="#F3F3F3"/>
+                                                    <Setter Property="Background" Value="#303030"/>
+                                                    <Setter Property="BorderBrush" Value="#131313"/>
+                                                </Style>
+                                            </GridView.ColumnHeaderContainerStyle>
+                                            <GridViewColumn Header="ItemName" DisplayMemberBinding="{Binding ItemValue.ItemName}" 
+                                            Width="220"/>
+                                            <GridViewColumn Header="Value" DisplayMemberBinding="{Binding ItemValue.ItemValue}" 
+                                            Width="80"/>
+                                        </GridView>
+                                    </ListView.View>
+
+                                    <ListView.GroupStyle>
+                                        <GroupStyle>
+                                            <GroupStyle.ContainerStyle>
+                                                <Style TargetType="{x:Type GroupItem}">
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate>
+                                                                <Expander IsExpanded="True">
+                                                                    <Expander.Header>
+                                                                        <TextBlock FontWeight="Bold" 
+                                                                                   FontSize="12" 
+                                                                                   Foreground="#F3F3F3"
+                                                                                   Text="{Binding Name}"/>
+                                                                    </Expander.Header>
+                                                                    <ItemsPresenter/>
+                                                                </Expander>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                            </GroupStyle.ContainerStyle>
+                                        </GroupStyle>
+                                    </ListView.GroupStyle>
+                                </ListView>
+                            </Border>
+
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

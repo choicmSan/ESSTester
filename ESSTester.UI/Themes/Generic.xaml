@@ -1,0 +1,28 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/ESSTester.UI;component/Themes/Styles/NormalButtonStyle.xaml"/>
+        
+        <ResourceDictionary Source="/ESSTester.UI;component/Themes/Units/NormalToggleButton.xaml"/>
+        <ResourceDictionary Source="/ESSTester.UI;component/Themes/Units/NormalButton.xaml"/>
+        <ResourceDictionary Source="/ESSTester.UI;component/Themes/Units/MainTopValueControl.xaml"/>
+
+        <ResourceDictionary Source="/ESSTester.UI;component/Themes/Units/OverviewValueText.xaml"/>
+        <ResourceDictionary Source="/ESSTester.UI;component/Themes/Units/OverviewLineValueText.xaml"/>
+        
+        <ResourceDictionary Source="/ESSTester.UI;component/Themes/Units/AlarmListViewItem.xaml"/>
+        <ResourceDictionary Source="/ESSTester.UI;component/Themes/Units/AlarmListView.xaml"/>
+
+        <ResourceDictionary Source="/ESSTester.UI;component/Themes/Views/ESSOverviewRackView.xaml"/>
+        
+        <ResourceDictionary Source="/ESSTester.UI;component/Themes/Views/ESSRackView.xaml"/>
+        <ResourceDictionary Source="/ESSTester.UI;component/Themes/Views/ESSSetupView.xaml"/>
+        <ResourceDictionary Source="/ESSTester.UI;component/Themes/Views/ESSEtcView.xaml"/>
+        <ResourceDictionary Source="/ESSTester.UI;component/Themes/Views/ESSOverview.xaml"/>
+        
+        <ResourceDictionary Source="/ESSTester.UI;component/Themes/Views/ESSTesterWindow.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    
+</ResourceDictionary>
